@@ -1,0 +1,135 @@
+﻿@import "tailwindcss";
+
+@theme {
+  --color-brand-primary: #2e7d32;
+  --color-brand-primary-hover: #1b5e20;
+  --color-brand-primary-light: #4caf50;
+  --color-brand-primary-glow: rgba(46, 125, 50, 0.35);
+  --color-brand-accent: #81c784;
+  --color-brand-accent-subtle: rgba(129, 199, 132, 0.12);
+
+  --color-surface-base: #0b1e13;
+  --color-surface-base-alt: #102a1c;
+  --color-surface-card: rgba(16, 42, 28, 0.65);
+  --color-surface-card-solid: #143322;
+  --color-surface-overlay: rgba(7, 18, 12, 0.75);
+  --color-surface-input: rgba(11, 30, 19, 0.8);
+
+  --color-text-primary: #f1f8f4;
+  --color-text-secondary: #a5d6a7;
+  --color-text-muted: #66bb6a;
+  --color-text-disabled: rgba(165, 214, 167, 0.38);
+
+  --color-border-subtle: rgba(129, 199, 132, 0.15);
+  --color-border-medium: rgba(129, 199, 132, 0.28);
+  --color-border-strong: rgba(129, 199, 132, 0.45);
+
+  --color-status-success: #66bb6a;
+  --color-status-success-bg: rgba(102, 187, 106, 0.15);
+  --color-status-warning: #ffa726;
+  --color-status-warning-bg: rgba(255, 167, 38, 0.15);
+  --color-status-error: #ef5350;
+  --color-status-error-bg: rgba(239, 83, 80, 0.15);
+  --color-status-info: #29b6f6;
+  --color-status-info-bg: rgba(41, 182, 246, 0.15);
+
+  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --radius-card: 1.25rem;
+  --radius-btn: 0.875rem;
+  --radius-input: 0.75rem;
+  --radius-badge: 9999px;
+}
+
+/* Glassmorphism Utilities */
+@layer components {
+  .glass-card {
+    background-color: var(--color-surface-card);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid var(--color-border-subtle);
+    border-radius: var(--radius-card);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+  }
+
+  .glass-card-hover {
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  .glass-card-hover:hover {
+    border-color: var(--color-border-medium);
+    transform: translateY(-2px);
+    box-shadow: 0 12px 40px 0 rgba(0, 0, 0, 0.45);
+  }
+
+  .glass-sheet {
+    background-color: rgba(13, 34, 23, 0.88);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    border-top: 1px solid var(--color-border-medium);
+    box-shadow: 0 -10px 40px 0 rgba(0, 0, 0, 0.6);
+  }
+
+  .glass-input {
+    background-color: var(--color-surface-input);
+    border: 1px solid var(--color-border-subtle);
+    color: var(--color-text-primary);
+    border-radius: var(--radius-input);
+    transition: all 0.15s ease-in-out;
+  }
+  .glass-input:focus {
+    outline: none;
+    border-color: var(--color-brand-primary-light);
+    box-shadow: 0 0 0 3px var(--color-brand-primary-glow);
+  }
+
+  .glass-button-primary {
+    background: linear-gradient(135deg, #2e7d32 0%, #1b5e20 100%);
+    color: #ffffff;
+    font-weight: 600;
+    border-radius: var(--radius-btn);
+    box-shadow: 0 4px 14px 0 var(--color-brand-primary-glow);
+    transition: all 0.2s ease-in-out;
+  }
+  .glass-button-primary:hover:not(:disabled) {
+    background: linear-gradient(135deg, #388e3c 0%, #2e7d32 100%);
+    transform: translateY(-1px);
+    box-shadow: 0 6px 20px 0 rgba(76, 175, 80, 0.45);
+  }
+  .glass-button-primary:active:not(:disabled) {
+    transform: translateY(0);
+  }
+
+  .glass-button-secondary {
+    background-color: rgba(129, 199, 132, 0.1);
+    border: 1px solid var(--color-border-subtle);
+    color: var(--color-text-primary);
+    font-weight: 500;
+    border-radius: var(--radius-btn);
+    transition: all 0.15s ease-in-out;
+  }
+  .glass-button-secondary:hover:not(:disabled) {
+    background-color: rgba(129, 199, 132, 0.18);
+    border-color: var(--color-border-medium);
+  }
+
+  .custom-scrollbar::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+  .custom-scrollbar::-webkit-scrollbar-track {
+    background: rgba(11, 30, 19, 0.5);
+  }
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    background: rgba(129, 199, 132, 0.25);
+    border-radius: 9999px;
+  }
+  .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: rgba(129, 199, 132, 0.4);
+  }
+}
+
+body {
+  font-family: var(--font-sans);
+  background: radial-gradient(circle at 50% 0%, #1a4329 0%, #0b1e13 60%, #050e09 100%);
+  background-attachment: fixed;
+  min-height: 100vh;
+}
