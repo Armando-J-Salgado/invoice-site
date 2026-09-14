@@ -115,11 +115,15 @@ export const useProductStore = create<ProductState>((set, get) => ({
   createVariant: async (data) => {
     set({ isLoading: true, error: null });
     try {
+
       const newVariant = await productApi.createVariant(data);
+      await get().fetchProducts();
+
       set((state) => ({
         variants: [newVariant, ...state.variants],
         isLoading: false,
       }));
+
       return newVariant;
     } catch (err: any) {
       set({ error: err.message, isLoading: false });
@@ -131,6 +135,8 @@ export const useProductStore = create<ProductState>((set, get) => ({
     set({ isLoading: true, error: null });
     try {
       const updated = await productApi.updateVariant(id, data);
+      await get().fetchProducts()
+
       set((state) => ({
         variants: state.variants.map((v) => (v.id === id ? { ...v, ...updated } : v)),
         isLoading: false,
@@ -146,6 +152,7 @@ export const useProductStore = create<ProductState>((set, get) => ({
     set({ isLoading: true, error: null });
     try {
       await productApi.deleteVariant(id);
+      await get().fetchProducts();
       set((state) => ({
         variants: state.variants.filter((v) => v.id !== id),
         isLoading: false,

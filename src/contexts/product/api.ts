@@ -48,35 +48,35 @@ export const productApi = {
 
   // Variants
   getVariants: async (params?: VariantFilterParams): Promise<ProductVariant[]> => {
-    return apiClient<ProductVariant[]>('/products/variants', { params: params as any });
+    return apiClient<ProductVariant[]>('/product-variants', { params: params as any });
   },
 
   getVariantById: async (id: number): Promise<ProductVariant> => {
-    return apiClient<ProductVariant>(`/products/variants/${id}`);
+    return apiClient<ProductVariant>(`/product-variants/${id}`);
   },
 
   createVariant: async (data: CreateProductVariantDto): Promise<ProductVariant> => {
-    return apiClient<ProductVariant>('/products/variants', {
+    return apiClient<ProductVariant>('/product-variants', {
       method: 'POST',
       body: JSON.stringify(data),
     });
   },
 
   updateVariant: async (id: number, data: UpdateProductVariantDto): Promise<ProductVariant> => {
-    return apiClient<ProductVariant>(`/products/variants/${id}`, {
+    return apiClient<ProductVariant>(`/product-variants/${id}`, {
       method: 'PATCH',
       body: JSON.stringify(data),
     });
   },
 
   deleteVariant: async (id: number): Promise<void> => {
-    return apiClient<void>(`/products/variants/${id}`, {
+    return apiClient<void>(`/product-variants/${id}`, {
       method: 'DELETE',
     });
   },
 
   recoverVariant: async (id: number): Promise<void> => {
-    return apiClient<void>(`/products/variants/${id}/recover`, {
+    return apiClient<void>(`/product-variants/${id}/recover`, {
       method: 'POST',
     });
   },

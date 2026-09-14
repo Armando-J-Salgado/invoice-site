@@ -5,7 +5,7 @@
   productId: number;
   createdAt?: string;
   updatedAt?: string;
-  deletedAt?: string | null;
+  deleted_at?: string | null;
   product?: Product;
 }
 
@@ -14,7 +14,7 @@ export interface Product {
   name: string;
   createdAt?: string;
   updatedAt?: string;
-  deletedAt?: string | null;
+  deleted_at?: string | null;
   variants?: ProductVariant[];
 }
 

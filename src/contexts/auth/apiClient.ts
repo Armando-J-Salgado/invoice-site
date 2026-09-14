@@ -1,7 +1,7 @@
 function getBaseUrl(): string {
   const envUrl = import.meta.env.VITE_API_URL;
   // When running in dev mode, use relative URL so the Vite proxy forwards to backend without CORS
-  if (import.meta.env.DEV && (!envUrl || envUrl.includes('localhost:3000') || envUrl.includes('127.0.0.1:3000'))) {
+  if (import.meta.env.DEV && (!envUrl || envUrl.includes('127.0.0.1:3000'))) {
     return '';
   }
   return (envUrl || '').replace(/\/+$/, '');

@@ -67,7 +67,7 @@ export const ProductModal: React.FC<ProductModalProps> = ({
           label="Nombre del Producto"
           value={name}
           onChange={(e) => setName(e.target.value)}
-          placeholder="Ej. Pan Francés, Croissant de Mantequilla..."
+          placeholder="Ej. Cheesecake, Flan..."
           required
           autoFocus
         />

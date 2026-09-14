@@ -91,13 +91,13 @@ export const VariantModal: React.FC<VariantModalProps> = ({
         />
 
         <Input
-          label="Precio ($ COP)"
+          label="Precio ($ USD)"
           type="number"
           min="0"
-          step="100"
+          step="0.01"
           value={price}
           onChange={(e) => setPrice(e.target.value)}
-          placeholder="Ej. 2500"
+          placeholder="Ej. 22.00"
           required
         />
 

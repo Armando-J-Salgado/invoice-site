@@ -174,7 +174,7 @@ export const ProductListPage: React.FC = () => {
         <div className="flex flex-col gap-3">
           {filteredProducts.map((product) => {
             const isExpanded = expandedProducts[product.id] ?? true;
-            const isDeleted = !!product.deletedAt;
+            const isDeleted = product.deleted_at !== null;
 
             return (
               <div
@@ -294,7 +294,7 @@ export const ProductListPage: React.FC = () => {
                       </div>
                     ) : (
                       product.variants.map((v) => {
-                        const isVarDeleted = !!v.deletedAt;
+                        const isVarDeleted = v.deleted_at !== null;
 
                         return (
                           <div
