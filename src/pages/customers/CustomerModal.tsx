@@ -112,7 +112,7 @@ export const CustomerModal: React.FC<CustomerModalProps> = ({
             label="Teléfono / Celular"
             value={phone}
             onChange={(e) => setPhone(e.target.value)}
-            placeholder="Ej. 310 987 6543"
+            placeholder="Ej. 6987-6543"
           />
           <Input
             label="Correo Electrónico"

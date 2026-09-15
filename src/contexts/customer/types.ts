@@ -10,7 +10,7 @@ export interface Customer {
   favoriteProduct?: ProductVariant | null;
   createdAt?: string;
   updatedAt?: string;
-  deletedAt?: string | null;
+  deleted_at?: string | null;
 }
 
 export interface CreateCustomerDto {

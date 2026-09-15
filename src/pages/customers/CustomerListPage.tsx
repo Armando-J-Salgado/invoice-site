@@ -146,7 +146,7 @@ export const CustomerListPage: React.FC = () => {
       ) : (
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
           {filteredCustomers.map((customer) => {
-            const isDeleted = !!customer.deletedAt;
+            const isDeleted = customer.deleted_at != null;
 
             return (
               <div

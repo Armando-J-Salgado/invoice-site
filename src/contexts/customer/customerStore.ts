@@ -1,6 +1,7 @@
 ﻿import { create } from 'zustand';
 import type { Customer, CreateCustomerDto, UpdateCustomerDto, CustomerFilterParams } from './types';
 import { customerApi } from './api';
+import { validateCreateUserData, validateUpdateCustomerData } from './validations';
 
 interface CustomerState {
   customers: Customer[];
@@ -35,6 +36,10 @@ export const useCustomerStore = create<CustomerState>((set, get) => ({
   createCustomer: async (data) => {
     set({ isLoading: true, error: null });
     try {
+      const result = validateCreateUserData(data)
+      if(!result.success) {
+        throw new TypeError(result.message)
+      }
       const newCustomer = await customerApi.createCustomer(data);
       set((state) => ({
         customers: [newCustomer, ...state.customers],
@@ -50,6 +55,10 @@ export const useCustomerStore = create<CustomerState>((set, get) => ({
   updateCustomer: async (id, data) => {
     set({ isLoading: true, error: null });
     try {
+      const result = validateUpdateCustomerData(data);
+      if(!result.success) {
+        throw new TypeError(result.message);
+      }
       const updated = await customerApi.updateCustomer(id, data);
       set((state) => ({
         customers: state.customers.map((c) => (c.id === id ? { ...c, ...updated } : c)),
