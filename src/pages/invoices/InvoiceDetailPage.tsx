@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import {
   Calendar,
@@ -32,17 +32,20 @@ export const InvoiceDetailPage: React.FC = () => {
   const [isDeleteDialogOpen, setIsDeleteDialogOpen] = useState(false);
   const [isRecoverDialogOpen, setIsRecoverDialogOpen] = useState(false);
   const [isActionLoading, setIsActionLoading] = useState(false);
+  const hasFetchedInvoice = useRef(false);
 
-  useEffect(() => {
-    if (id) {
-      fetchInvoiceById(Number(id))
-        .then(setInvoice)
-        .catch((err) => {
-          toast.error(err.message || 'No se pudo cargar la factura');
-          navigate('/invoices');
-        });
-    }
-  }, [id, fetchInvoiceById, navigate, toast]);
+useEffect(() => {
+  if (!id || hasFetchedInvoice.current) return;
+
+  hasFetchedInvoice.current = true;
+
+  fetchInvoiceById(Number(id))
+    .then(setInvoice)
+    .catch((err) => {
+      toast.error(err.message || 'No se pudo cargar la factura');
+      navigate('/invoices');
+    });
+}, [id, fetchInvoiceById, navigate]);
 
   if (isLoading || !invoice) {
     return (

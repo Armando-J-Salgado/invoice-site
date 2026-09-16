@@ -162,7 +162,7 @@ export const CustomerListPage: React.FC = () => {
                       <div className="w-8 h-8 rounded-full bg-brand-primary/20 text-brand-accent flex items-center justify-center text-xs font-bold border border-brand-accent/30">
                         {customer.name.charAt(0)}
                       </div>
-                      <h3 className="text-sm font-bold text-text-primary truncate max-w-[180px]">
+                      <h3 className="text-sm font-bold text-text-primary truncate max-w-45">
                         {customer.name}
                       </h3>
                     </div>

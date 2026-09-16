@@ -28,7 +28,7 @@ export const InvoiceListPage: React.FC = () => {
   }, [fetchInvoices]);
 
   // Statistics calculation for quick dashboard overview
-  const activeInvoices = invoices.filter((inv) => !inv.deletedAt);
+  const activeInvoices = invoices.filter((inv) => !inv.deleted_at);
   const totalSalesAmount = activeInvoices.reduce((acc, inv) => acc + Number(inv.total || 0), 0);
   const totalSalesCount = activeInvoices.length;
 
