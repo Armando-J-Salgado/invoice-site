@@ -68,7 +68,7 @@ export const SideDrawer: React.FC<SideDrawerProps> = ({ isOpen, onClose }) => {
         <div>
           <div className="flex items-center justify-between pb-5 border-b border-border-subtle">
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-brand-primary-light to-brand-primary flex items-center justify-center shadow-lg shadow-brand-primary/30">
+              <div className="w-10 h-10 rounded-xl bg-linear-to-br from-brand-primary-light to-brand-primary flex items-center justify-center shadow-lg shadow-brand-primary/30">
                 <Store size={22} className="text-white" />
               </div>
               <div>

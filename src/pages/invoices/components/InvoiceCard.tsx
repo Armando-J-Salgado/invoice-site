@@ -12,7 +12,7 @@ export interface InvoiceCardProps {
 
 export const InvoiceCard: React.FC<InvoiceCardProps> = ({ invoice }) => {
   const navigate = useNavigate();
-  const isDeleted = !!(invoice.deletedAt || invoice.deleted_at);
+  const isDeleted = invoice.deleted_at != null;
 
   const paymentMethodLabel = {
     CASH: 'Efectivo',
@@ -67,7 +67,7 @@ export const InvoiceCard: React.FC<InvoiceCardProps> = ({ invoice }) => {
         <div className="flex flex-col gap-1 text-xs text-text-secondary">
           <div className="flex items-center gap-1.5 text-text-primary font-medium">
             <User size={14} className="text-brand-accent shrink-0" />
-            <span className="truncate max-w-[180px] sm:max-w-xs">
+            <span className="truncate max-w-45 sm:max-w-xs">
               {invoice.customer?.name || (invoice.type === 'CONTADO' ? 'Cliente General' : 'Sin cliente')}
             </span>
           </div>

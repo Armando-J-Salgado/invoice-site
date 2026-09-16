@@ -50,7 +50,7 @@ export const invoiceApi = {
   },
 
   getInvoiceById: async (id: number): Promise<Invoice> => {
-    return apiClient<Invoice>(`/invoices/${id}`);
+    return apiClient<Invoice>(`/invoices/${id}?includeDeleted=true`);
   },
 
   createInvoice: async (data: CreateInvoiceDto): Promise<Invoice> => {
